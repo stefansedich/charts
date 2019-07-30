@@ -425,6 +425,10 @@ dags:
   ## Note that this location is referred to in airflow.cfg, so if you change it, you must update airflow.cfg accordingly.
   path: /usr/local/airflow/dags
   ##
+  ## Relative path where dags are located within dags.path.
+  ##
+  subPath:
+  ##
   ## Set to True to prevent pickling DAGs from scheduler to workers
   doNotPickle: false
   ##

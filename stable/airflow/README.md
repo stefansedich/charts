@@ -394,6 +394,7 @@ The following table lists the configurable parameters of the Airflow chart and t
 | `logsPersistence.size`                   | Persistant storage size request                         | `1Gi`                     |
 | `dags.doNotPickle`                       | should the scheduler disable DAG pickling               | `false`                   |
 | `dags.path`                              | mount path for persistent volume                        | `/usr/local/airflow/dags` |
+| `dags.subPath`                           | Relative path where dags are located within dags.path   | nil                       |
 | `dags.initContainer.enabled`             | Fetch the source code when the pods starts              | `false`                   |
 | `dags.initContainer.image.repository`    | Init container Docker image.                            | `alpine/git`              |
 | `dags.initContainer.image.tag`           | Init container Docker image tag.                        | `1.0.4`                   |

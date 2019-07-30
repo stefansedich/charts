@@ -27,7 +27,11 @@ data:
   AIRFLOW__CORE__DONOT_PICKLE: "{{ .Values.dags.doNotPickle }}"
   AIRFLOW__CELERY__FLOWER_URL_PREFIX: "{{ .Values.ingress.flower.path }}"
   AIRFLOW__CELERY__WORKER_CONCURRENCY: "{{ .Values.workers.celery.instances }}"
+  {{- if .Values.dags.subPath }}
+  AIRFLOW__CORE__DAGS_FOLDER: "{{ .Values.dags.path }}/{{.Values.dags.subPath}}"
+  {{- else }}
   AIRFLOW__CORE__DAGS_FOLDER: "{{ .Values.dags.path }}"
+  {{- end }}
   AIRFLOW__CORE__BASE_LOG_FOLDER: "{{ .Values.logs.path }}"
   AIRFLOW__CORE__DAG_PROCESSOR_MANAGER_LOG_LOCATION: "{{ printf "%s/%s" .Values.logs.path "dag_processor_manager/dag_processor_manager.log" }}"
   AIRFLOW__SCHEDULER__CHILD_PROCESS_LOG_DIRECTORY: "{{ printf "%s/%s" .Values.logs.path "scheduler" }}"
