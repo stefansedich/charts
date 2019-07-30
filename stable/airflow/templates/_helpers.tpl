@@ -90,6 +90,17 @@ Create a random string if the supplied key does not exist
 {{- end -}}
 
 {{/*
+Define the dags path taking into account any set subPath.
+*/}}
+{{- define "dags.fullPath" -}}
+{{- if .Values.dags.subPath -}}
+{{ .Values.dags.path }}/{{.Values.dags.subPath}}
+{{- else -}}
+{{ .Values.dags.path }}
+{{- end -}}
+{{- end -}}
+
+{{/*
 Create a set of environment variables to be mounted in web, scheduler, and woker pods.
 For the database passwords, we actually use the secretes created by the postgres and redis sub-charts.
 Note that the environment variables themselves are determined by the puckel/docker-airflow image.
@@ -117,13 +128,3 @@ The key names for postgres and redis are fixed, which is consistent with the sub
 {{ toYaml .Values.airflow.extraEnv | indent 2 }}
   {{- end }}
 {{- end }}
-
-{{/*
-Define the dags path taking into account any set subPath.
-*/}}
-{{- define "dags.fullPath" -}}
-{{- if .Values.dags.subPath -}}
-{{ .Values.dags.path }}/{{.Values.dags.subPath}}
-{{- else -}}
-{{ .Values.dags.path }}
-{{- end -}}
