@@ -10,11 +10,11 @@ metadata:
 data:
   install-requirements.sh: |
     #!/bin/sh -e
-    if [ ! -d {{ .Values.dags.path }} ]; then
+    if [ ! -d {{ include "dags.fullPath" . }} ]; then
       echo "No folder {{ .Values.dags.path }}"
       exit 0
     fi
-    cd {{ .Values.dags.path }}
+    cd {{ include "dags.fullPath" . }}
     if [ -f requirements.txt ]; then
       pip install --user -r requirements.txt
     else
