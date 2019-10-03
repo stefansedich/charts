@@ -9,6 +9,7 @@ metadata:
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/part-of: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/component: admin
   {{- with .Values.adminService.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
