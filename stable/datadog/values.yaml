@@ -506,6 +506,7 @@ kubeStateMetrics:
   enabled: true
 
 kube-state-metrics:
+  enabled: true
   rbac:
     ## @param created - boolean - required
     ## If true, create & use RBAC resources
