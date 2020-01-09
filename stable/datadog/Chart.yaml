@@ -29,3 +29,7 @@ maintainers:
   email: lenaic.huard@datadoghq.com
 - name: celenechang
   email: celene@datadoghq.com
+dependencies:
+- name: kube-state-metrics
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  version: 2.2.3
